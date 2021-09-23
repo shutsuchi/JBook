@@ -10,28 +10,25 @@ export const fetchPlugin = (inputCode: string) => {
   return {
     name: 'fetch-plugin',
     setup(build: esbuild.PluginBuild) {
-      build.onLoad({ filter: /(^index\.js$)/ },  () => {
+      build.onLoad({ filter: /(^index\.js$)/ }, () => {
         return {
           loader: 'jsx',
           contents: inputCode,
         };
       });
 
-      build.onLoad({ filter: /.*/ },  async (args: esbuild.OnLoadArgs) => {
+      build.onLoad({ filter: /.*/ }, async (args: esbuild.OnLoadArgs) => {
         const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
 
         if (cachedResult) {
           return cachedResult;
-        };
+        }
       });
 
-      build.onLoad({ filter: /.css$/ },  async (args: esbuild.OnLoadArgs) => {
+      build.onLoad({ filter: /.css$/ }, async (args: esbuild.OnLoadArgs) => {
         const { data, request } = await axios.get(args.path);
 
-        const escaped = data
-          .replace(/\n/g, '')
-          .replace(/"/g, '\\"')
-          .replace(/'/g, "\\'")
+        const escaped = data.replace(/\n/g, '').replace(/"/g, '\\"').replace(/'/g, "\\'");
         const contents = `
           const style = document.createElement('style');
           style.innerText = '${escaped}';
@@ -60,6 +57,6 @@ export const fetchPlugin = (inputCode: string) => {
 
         return result;
       });
-    }
-  }
-}
+    },
+  };
+};
