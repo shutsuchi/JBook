@@ -1,12 +1,21 @@
 import ReactDOM from 'react-dom';
-import CodeCell from './components/CodeCell';
+import { Provider } from 'react-redux';
+import { store } from './state';
+// import CodeCell from './components/CodeCell';
+import TextEditor from './components/TextEditor';
+import CellList from './components/CellList';
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const App = () => {
   return (
-    <div>
-      <CodeCell />
-    </div>
+    <Provider store={store}>
+      <div>
+        <CellList />
+        {/* <CodeCell /> */}
+        {/* <TextEditor /> */}
+      </div>
+    </Provider>
   );
 };
 
