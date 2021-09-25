@@ -4,7 +4,7 @@ import { Action } from '../actions';
 import { Cell } from '../cell';
 
 interface CellsState {
-  loading: boolean;
+  isLoading: boolean;
   error: string | null;
   order: string[];
   data: {
@@ -13,7 +13,7 @@ interface CellsState {
 }
 
 const initialState: CellsState = {
-  loading: false,
+  isLoading: false,
   error: null,
   order: [],
   data: {},
@@ -32,7 +32,6 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       state.order = state.order.filter((id) => id !== action.payload);
 
       return state;
-    // TODO: ADD Move Top | bottom
     case ActionType.MOVE_CELL:
       const { direction } = action.payload;
       const index = state.order.findIndex((id) => id === action.payload.id);
@@ -46,7 +45,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       state.order[targetIndex] = action.payload.id;
 
       return state;
-    case ActionType.INSERT_CELL_BEFORE:
+    case ActionType.INSERT_CELL_AFTER:
       const cell: Cell = {
         content: '',
         type: action.payload.type,
@@ -60,9 +59,9 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       );
 
       if (foundIndex < 0) {
-        state.order.push(cell.id);
+        state.order.unshift(cell.id);
       } else {
-        state.order.splice(foundIndex, 0, cell.id);
+        state.order.splice(foundIndex + 1, 0, cell.id);
       }
 
       return state;
