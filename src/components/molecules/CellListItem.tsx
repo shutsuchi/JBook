@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Cell } from '../state';
-import ActionBar from './ActionBar';
+import { Cell } from '../../state';
+import ActionBar from '../atoms/ActionBar';
 import CodeCell from './CodeCell';
-import TextEditor from './TextEditor';
+import TextEditor from '../atoms/TextEditor';
 import './CellListItem.css';
 
 interface CellListItemProps {
