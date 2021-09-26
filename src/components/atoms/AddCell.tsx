@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useActions } from '../../hooks/useActions';
+import AddCellButton from './AddCellButton';
 import './AddCell.css';
 
 interface AddCellProps {
@@ -15,24 +16,14 @@ const AddCell: FC<AddCellProps> = (props) => {
   return (
     <div className={`add-cell ${isForceVisible && 'force-visible'}`}>
       <div className="add-buttons">
-        <button
-          className="button is-rounded is-primary is-small"
-          onClick={() => insertCellAfter(previousCellId, 'code')}
-        >
-          <span className="icon is-small">
-            <i className="fas fa-plus" />
-          </span>
-          <span>Code</span>
-        </button>
-        <button
-          className="button is-rounded is-primary is-small"
-          onClick={() => insertCellAfter(previousCellId, 'text')}
-        >
-          <span className="icon is-small">
-            <i className="fas fa-plus" />
-          </span>
-          <span>Text</span>
-        </button>
+        <AddCellButton
+          label="Code"
+          handleClick={() => insertCellAfter(previousCellId, 'code')}
+        />
+        <AddCellButton
+          label="Text"
+          handleClick={() => insertCellAfter(previousCellId, 'text')}
+        />
       </div>
       <div className="divider" />
     </div>
