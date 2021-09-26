@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useActions } from '../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import './AddCell.css';
 
 interface AddCellProps {

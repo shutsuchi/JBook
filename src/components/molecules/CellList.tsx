@@ -1,7 +1,8 @@
 import { FC, Fragment } from 'react';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import CellListItem from './CellListItem';
-import AddCell from './AddCell';
+import AddCell from '../atoms/AddCell';
+import './CellList.css';
 
 const CellList: FC = () => {
   const cells = useTypedSelector((state) =>
@@ -16,7 +17,7 @@ const CellList: FC = () => {
   ));
 
   return (
-    <div>
+    <div className="cell-list">
       <AddCell previousCellId={null} isForceVisible={cells!.length === 0} />
       {renderedCells}
     </div>
