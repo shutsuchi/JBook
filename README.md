@@ -23,6 +23,8 @@ In the project directory, you can run:
 - NPM
 - Esbuild
 - IndexDB
+- Express
+- Lerna
 - HTML
 - CSS
 
