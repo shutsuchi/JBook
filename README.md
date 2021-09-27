@@ -1,5 +1,5 @@
-<h1 align="center">JBook</h1>
-<p align="center">Everyone can use JBook as Markdown-memo or Javascript code-editor, and easily share with other people</p>
+<h1 align="center">JPBK</h1>
+<p align="center">Everyone can use JPBK as Markdown-memo or Javascript code-editor, and easily share with other people</p>
 
 ## CAN'T USE IN THIS APP
 
